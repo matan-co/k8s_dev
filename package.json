@@ -7,7 +7,8 @@
   "scripts": {
     "start": "nodemon ./src/index.js",
     "kube:getKDashboardToken": "kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')",
-    "kube:deploy": "kubectl apply -f kube"
+    "kube:deploy": "kubectl apply -f kube",
+    "kube:deploy:dashboard":"kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml"
   },
   "dependencies": {
     "express": "^4.16.1",
