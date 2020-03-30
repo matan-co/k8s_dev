@@ -1,5 +1,5 @@
 {
-  "name": "docker_web_app",
+  "name": "my-app",
   "version": "1.0.0",
   "description": "Node.js on Docker",
   "author": "Matan Cohen",
@@ -7,13 +7,11 @@
   "scripts": {
     "start": "node ./src/index.js",
     "install:deps":"brew install skaffold",
-    "kube:getKDashboardToken": "kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')",
     "kube:deploy": "kubectl apply -f kube",
-    "kube:deploy:dashboard":"kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml"
+    "kube:deploy:dashboard":"kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml",
+    "kube:dashboard:token": "kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')",
   },
   "dependencies": {
-    "express": "^4.16.1",
-    "nodemon": "2.0.2",
-    "uuid":"7.0.2"
+    "express": "^4.16.1"
   }
 }

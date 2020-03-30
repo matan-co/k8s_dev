@@ -4,7 +4,7 @@ metadata:
   name: k-s
 build:
   artifacts:
-  - image: matan/knote
+  - image: my-repo/my-app
 deploy:
   kubectl:
     manifests:
