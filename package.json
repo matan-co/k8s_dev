@@ -5,13 +5,15 @@
   "author": "Matan Cohen",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon ./src/index.js",
+    "start": "node ./src/index.js",
+    "install:deps":"brew install skaffold",
     "kube:getKDashboardToken": "kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')",
     "kube:deploy": "kubectl apply -f kube",
     "kube:deploy:dashboard":"kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml"
   },
   "dependencies": {
     "express": "^4.16.1",
-    "nodemon": "2.0.2"
+    "nodemon": "2.0.2",
+    "uuid":"7.0.2"
   }
 }

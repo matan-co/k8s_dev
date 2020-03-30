@@ -14,20 +14,10 @@ spec:
     spec:
       containers:
         - name: app
-          image: matan/node-web-app
+          image: matan/knote
           ports:
             - containerPort: 3000
-          imagePullPolicy: Never
-          # Inside the container
-          volumeMounts:
-            - mountPath: /usr/src/app/src
-              name: test-volume
-      volumes:
-        - name: test-volume
-          # on my machine
-          hostPath:
-            path: /Users/matan.c/dev/play/k8s/src
-                
+          imagePullPolicy: Never        
 ---
 apiVersion: v1
 kind: Service

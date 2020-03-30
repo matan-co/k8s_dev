@@ -1,0 +1,11 @@
+apiVersion: skaffold/v2beta1
+kind: Config
+metadata:
+  name: k-s
+build:
+  artifacts:
+  - image: matan/knote
+deploy:
+  kubectl:
+    manifests:
+    - kube/app.yaml
