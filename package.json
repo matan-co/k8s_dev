@@ -7,9 +7,7 @@
   "scripts": {
     "start": "node ./src/index.js",
     "install:deps":"brew install skaffold",
-    "kube:deploy": "kubectl apply -f kube",
-    "kube:dashboard:deploy":"kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml",
-    "kube:dashboard:token": "kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')",
+    "kube:deploy": "kubectl apply -f kube"
   },
   "dependencies": {
     "express": "^4.16.1"
