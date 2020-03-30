@@ -1,0 +1,16 @@
+{
+  "name": "docker_web_app",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "Matan Cohen",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "kube:getKDashboardToken": "kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')",
+    "kube:deploy": "kubectl apply -f kube"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "nodemon": "2.0.2"
+  }
+}
