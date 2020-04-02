@@ -6,7 +6,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "install:deps":"brew install skaffold",
+    "install:deps": "brew install skaffold",
+    "dashboard:proxy": "kubectl proxy &",
     "kube:deploy": "kubectl apply -f kube"
   },
   "dependencies": {
