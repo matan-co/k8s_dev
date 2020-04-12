@@ -4,8 +4,13 @@ metadata:
   name: k-s
 build:
   artifacts:
-  - image: matan/my-app
+    - image: matan/my-app
 deploy:
-  kubectl:
-    manifests:
-    - kube/app.yaml
+  helm:
+    releases:
+      - name: skaffold-helm
+        chartPath: ./charts/backend
+        valuesFiles:
+          - charts/backend/templates/.spec.values.yaml
+        values:
+          image: matan/my-app
