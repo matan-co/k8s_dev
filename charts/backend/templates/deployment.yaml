@@ -21,7 +21,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: mysecret
-                  key: username
+                  key: mysecret
           envFrom:
             - configMapRef:
                 name: {{ .Chart.Name }}-configmap

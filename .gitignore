@@ -1,1 +1,4 @@
 node_modules
+.sops.yaml
+*.dec
+secrets.values.yaml
