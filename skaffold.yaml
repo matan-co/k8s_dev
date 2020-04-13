@@ -8,9 +8,9 @@ build:
 deploy:
   helm:
     releases:
-      - name: skaffold-helm
+      - name: dev
         chartPath: ./charts/backend
         valuesFiles:
-          - charts/backend/values.yaml
+          - charts/backend/helm_vars/dev/values.yaml
         values:
           image: matan/my-app

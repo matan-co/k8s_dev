@@ -15,23 +15,17 @@ spec:
       containers:
         - name: app
           image: {{.Values.image }}
-          imagePullPolicy: Never
+          imagePullPolicy: {{.Values.pullPolicy }}
+          env:
+            - name: SECRET_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: username
           envFrom:
             - configMapRef:
                 name: {{ .Chart.Name }}-configmap
           ports:
-            - containerPort: 3000
-          
+            - containerPort: {{ .Values.nodePort }}
          
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ .Chart.Name }}
-spec:
-  selector:
-    app: {{ .Chart.Name }}
-  ports:
-    - port: 4000
-      targetPort: 3000
-  type: LoadBalancer
+

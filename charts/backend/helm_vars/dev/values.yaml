@@ -1,0 +1,8 @@
+nodePort: "6667"
+replicaCount: "1"
+image:
+  pullPolicy: Never
+
+# Must be in base 64 and encrypted
+secrets:
+  username: eW9zc2k=
