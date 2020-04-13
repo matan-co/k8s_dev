@@ -11,6 +11,6 @@ deploy:
       - name: skaffold-helm
         chartPath: ./charts/backend
         valuesFiles:
-          - charts/backend/templates/.spec.values.yaml
+          - charts/backend/values.yaml
         values:
           image: matan/my-app
