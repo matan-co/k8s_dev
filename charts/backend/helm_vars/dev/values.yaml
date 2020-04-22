@@ -2,3 +2,9 @@ nodePort: "6667"
 replicaCount: "1"
 image:
   pullPolicy: Never
+values:
+  - name: username
+    value: "matan"
+  - name: password
+    value: "123hb1j2h3vlj1v23"
+  

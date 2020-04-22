@@ -16,15 +16,11 @@ spec:
         - name: app
           image: {{.Values.image }}
           imagePullPolicy: {{.Values.pullPolicy }}
-          env:
-            - name: SECRET_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: mysecret
-                  key: mysecret
           envFrom:
             - configMapRef:
                 name: {{ .Chart.Name }}-configmap
+            - secretRef:
+                name: secrets
           ports:
             - containerPort: {{ .Values.nodePort }}
          

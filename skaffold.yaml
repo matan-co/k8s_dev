@@ -10,9 +10,9 @@ deploy:
     releases:
       - name: dev
         chartPath: ./charts/backend
-        useHelmSecrets: true
+        useHelmSecrets: false
         valuesFiles:
           - charts/backend/helm_vars/dev/values.yaml
-          - charts/backend/helm_vars/dev/secrets.values.yaml
+          # - charts/backend/helm_vars/dev/secrets.values.yaml
         values:
           image: matan/my-app
