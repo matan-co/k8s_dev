@@ -1,4 +1,18 @@
+dist/*.json
+
 node_modules
-.sops.yaml
-*.dec
-secrets.values.yaml
+
+.idea
+
+.npmrc
+
+newrelic_agent.log
+
+# jenkins reports
+**/jenkins/reports
+
+*.tgz
+
+.DS_Store
+
+*secrets*dec
