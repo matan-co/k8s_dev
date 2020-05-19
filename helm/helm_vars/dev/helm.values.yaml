@@ -1,0 +1,35 @@
+namespace:
+  name: companyname
+  gateway: companyname-gateway
+
+serviceName: my-app
+nodePort: "3000"
+
+pullPolicy: Never
+
+viratulService:
+  host: my-app.companyname.localhost
+
+secrets:
+  name: my-app-secrets
+
+configMap:
+  name: my-app-configmap
+
+deployment:
+  version: v1
+  image: companyname/my-app
+  replicaCount: "1"
+
+canary:
+  enabled: true
+  version: v2
+  image: dockercloud/hello-world
+  serviceName: my-app-v2
+  replicaCount: "1"
+
+jwt:
+  enabled: false
+
+serviceAccount:
+  enabled: false

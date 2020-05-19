@@ -1,18 +1,30 @@
 apiVersion: skaffold/v2beta1
 kind: Config
 metadata:
-  name: k-s
-build:
-  artifacts:
-    - image: matan/my-app
-deploy:
-  helm:
-    releases:
-      - name: dev
-        chartPath: ./charts/backend
-        useHelmSecrets: true
-        valuesFiles:
-          - charts/backend/helm_vars/dev/values.yaml
-          - charts/backend/helm_vars/dev/secrets.values.yaml
-        values:
-          image: matan/my-app
+  name: skaffold-config
+profiles:
+  - name: dev
+    activation:
+      - kubeContext: docker-desktop
+    build:
+      artifacts:
+        - image: mycompany/my-app
+    deploy:
+      helm:
+        releases:
+          - name: namespace
+            namespace: mycompany
+            chartPath: helm-charts/namespace
+            valuesFiles:
+              - helm/helm_vars/dev/helm.values.yaml
+          - name: my-app
+            namespace: mycompany
+            chartPath: helm-charts/istio-microservice
+            useHelmSecrets: true
+            valuesFiles:
+              - helm/helm_vars/dev/helm.values.yaml
+              - helm/helm_vars/dev/env.values.yaml
+              - helm/helm_vars/dev/secrets.values.yaml
+            values:
+              image: mycompany/my-app
+       
