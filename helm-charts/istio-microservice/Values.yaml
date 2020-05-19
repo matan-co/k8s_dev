@@ -1,0 +1,35 @@
+namespace:
+  name: default
+
+serviceName: template-service
+nodePort: 9999
+
+pullPolicy: Never
+
+secrets:
+  name: template-service-secrets
+
+serviceAccount:
+  enabled: false
+  roleArn: ''
+
+configMap:
+  name: template-service-configmap
+
+deployment:
+  version: v1
+  image: default/template-service
+  replicaCount: "1"
+
+canary:
+  enabled: false
+  version: v2
+  image: default/template-service
+  serviceName: template-service-v2
+  replicaCount: "1"
+
+jwt:
+  enabled: false
+
+cors:
+  enabled: false

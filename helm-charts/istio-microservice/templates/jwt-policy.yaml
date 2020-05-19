@@ -1,0 +1,21 @@
+{{- if .Values.jwt.enabled }}
+apiVersion: authentication.istio.io/v1alpha1
+kind: Policy
+metadata:
+  namespace: {{ .Values.namespace.name }}
+  name: {{ .Values.serviceName }}-jwt
+spec:
+  targets:
+  - name: {{ .Values.serviceName }}
+  peers:
+  - mtls: {}
+  origins:
+  - jwt:
+      issuer: "https://xxx/accounts"
+      jwksUri: "https://xxx/.../jwks"
+      triggerRules:
+        - excludedPaths:
+          - exact: /ping
+          - exact: /favicon.icon
+  principalBinding: USE_ORIGIN
+{{- end }}

@@ -1,0 +1,20 @@
+apiVersion: authentication.istio.io/v1alpha1
+kind: Policy
+metadata:
+  name: default
+  namespace: {{ .Values.namespace.name }}
+spec:
+  peers:
+  - mtls: {}
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: {{ .Values.namespace.name }}-mutual-tls
+  namespace: {{ .Values.namespace.name }}
+spec:
+  host: "*.{{ .Values.namespace.name }}.svc.cluster.local"
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

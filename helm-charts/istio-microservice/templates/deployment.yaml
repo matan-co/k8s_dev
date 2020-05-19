@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.namespace.name }}
+  name: {{ .Values.serviceName }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.serviceName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.serviceName }}
+        version: {{ .Values.deployment.version }}
+    spec:
+      {{- if .Values.serviceAccount.enabled }}
+      serviceAccountName: {{ .Values.serviceName }}
+      {{- end }}
+      containers:
+        - name: app
+          image: {{.Values.image }}
+          envFrom:
+            - configMapRef:
+                name:  {{ .Values.configMap.name }}
+            - secretRef:
+                name: {{ .Values.secrets.name }}
+          ports:
+            - containerPort: {{ .Values.nodePort }}
