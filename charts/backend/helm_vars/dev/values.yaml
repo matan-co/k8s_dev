@@ -1,6 +1,0 @@
-nodePort: "6667"
-replicaCount: "1"
-image:
-  pullPolicy: Never
-
-  
