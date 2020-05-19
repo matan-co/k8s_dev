@@ -1,2 +1,3 @@
 creation_rules:
-    - kms: ""
+  - path_regex: ./helm/helm_vars/dev/secrets.values.yaml
+    kms: "arn_kms_key_name"
