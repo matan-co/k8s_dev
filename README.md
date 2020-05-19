@@ -5,7 +5,7 @@
 
 # create namespace
 
-- kubectl create namespace walkme(whatever)
+- kubectl create namespace companyname(whatever)
 
 # install isito on your kubernets local cluster
 
